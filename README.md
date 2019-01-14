@@ -6,7 +6,7 @@
 
 #### 关于系统架构：[OS-Q](https://github.com/OS-Q/OS-Q)
 
-## [平台描述](https://github.com/OS-Q/M9/wiki) 
+## [平台描述](https://github.com/OS-Q/W37/wiki) 
 
 NPU加速平台，主要通过SOC芯片内嵌的NPU实现模型加速运算，也包括外挂的扩展硬件设备
 
