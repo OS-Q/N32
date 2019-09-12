@@ -1,0 +1,11 @@
+{
+    "description": "GPIO Interface library for the Raspberry Pi",
+    "name": "framework-N32",
+    "system": [
+        "linux_armv6l",
+        "linux_armv7l",
+        "linux_armv8l"
+    ],
+    "url": "http://wiringpi.com",
+    "version": "1.242.0"
+}
