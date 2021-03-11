@@ -11,8 +11,12 @@ NAME   ?= clock
 	sdcc ${CFLAGS} -c $<
 
 .PHONY: all
-all: $(NAME).hex
-cp $(NAME).hex ../build
+all: $(NAME).hex size
+	cp $(NAME).hex ../build
+
+size:
+	@echo "-----\nImage size:"
+	@stat -L -c %s $(NAME).bin
 
 .PHONY: clean
 clean:
