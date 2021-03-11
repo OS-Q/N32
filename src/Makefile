@@ -1,4 +1,5 @@
 CFLAGS = -mmcs51 --std-c99
+NAME   ?= clock
 
 %.hex : %.ihx
 	packihx $< > $@
@@ -10,7 +11,8 @@ CFLAGS = -mmcs51 --std-c99
 	sdcc ${CFLAGS} -c $<
 
 .PHONY: all
-all: stc15clock.hex
+all: $(NAME).hex
+cp $(NAME).hex ../build
 
 .PHONY: clean
 clean:

@@ -28,13 +28,9 @@ jobs:
 
     - name: Build
       run: make
-      working-directory: project/app/
-
-    - name: Build Bootloader
-      run: make
-      working-directory: project/bootloader/
+      working-directory: src/
 
     - uses: actions/upload-artifact@v2
       with:
-        name: sdcc-build
-        path: project/build
+        name: upload-build
+        path: build/
