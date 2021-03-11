@@ -3,12 +3,11 @@ NAME   	?= clock
 TARGET 	?= main.ihx
 OBJS 	= $(SRCS:.c=.rel)
 OBJCOPY  = sdobjcopy
-LDFLAGS  = -m$(ARCH) -l$(ARCH) --out-fmt-ihx
 
 all: $(TARGET) size
 
-$(TARGET): $(OBJS)
-	sdcc $(LDFLAGS) $(OBJS) -o $@
+$(TARGET): %.c stc15_buttons.rel stc15_dusk.rel stc15_display.rel ds1302.rel
+	sdcc ${CFLAGS} $^
 	packihx $(TARGET) > $(NAME).hex
 	@$(OBJCOPY) -I ihex --output-target=binary $(TARGET) $(NAME).bin
 	cp $(NAME).bin ../build/

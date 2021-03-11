@@ -5,6 +5,7 @@
 [![Build Status](https://github.com/OS-Q/T16A/workflows/SDCC_default/badge.svg)](https://github.com/OS-Q/T16A/actions)
 [![Build Status](https://github.com/OS-Q/T16A/workflows/SDCC_4.0.0/badge.svg)](https://github.com/OS-Q/T16A/actions)
 [![Build Status](https://github.com/OS-Q/T16A/workflows/SDCC_4.1.0/badge.svg)](https://github.com/OS-Q/T16A/actions)
+[![Build Status](https://github.com/OS-Q/T16A/workflows/OSQ/badge.svg)](https://github.com/OS-Q/OSQ/actions)
 
 ### [简介](https://github.com/OS-Q/T16A/wiki)
 
