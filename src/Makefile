@@ -1,26 +1,31 @@
 CFLAGS 	= -mmcs51 --std-c99
+LDFLAGS = -mmcs51 --out-fmt-ihx
 NAME   	?= clock
 TARGET 	?= main.ihx
-OBJS 	= $(SRCS:.c=.rel)
+SRCS    := $(wildcard *.c)
+OBJS     = $(SRCS:.c=.rel)
+CC       = sdcc
 OBJCOPY  = sdobjcopy
+PACK_HEX = packihx
 
 all: $(TARGET) size
 
-$(TARGET): %.c stc15_buttons.rel stc15_dusk.rel stc15_display.rel ds1302.rel
-	sdcc ${CFLAGS} $^
-	packihx $(TARGET) > $(NAME).hex
+$(TARGET): $(OBJS)
+	$(CC) $(LDFLAGS) $(OBJS) -o $@
+	$(PACK_HEX) $(TARGET) > $(NAME).hex
 	@$(OBJCOPY) -I ihex --output-target=binary $(TARGET) $(NAME).bin
 	cp $(NAME).bin ../build/
 	cp $(NAME).hex ../build/
 
-%.rel : %.c %.h
-	sdcc ${CFLAGS} -c $<
+%.rel: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 size:
 	@echo "-----\nImage size:"
 	@stat -L -c %s $(NAME).bin
-	echo "\nfinish build and upload." >> ../build/README
+	echo "\nfinish build and upload." >> ../build/README.txt
 
-.PHONY: clean
 clean:
-	$(RM) *.asm *.rel *.lst *.rst *.hex *.mem *.map *.sym *.lk *.ihx
+	rm -f *.asm *.rel *.lst *.rst *.hex *.mem *.map *.sym *.lk *.ihx
+
+.PHONY: clean all
