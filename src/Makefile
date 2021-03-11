@@ -21,9 +21,8 @@ $(TARGET): $(OBJS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 size:
-	@echo "-----Image size:"	>> ../build/README.txt
-	@stat -L -c %s $(NAME).bin
-	1>README.txt 2>&1
+	@echo "-----BIN size:"	>> ../build/README.txt
+	@stat -L -c %s $(NAME).bin 	>> ../build/README.txt
 	echo "\nfinish build and upload." >> ../build/README.txt
 
 clean:
